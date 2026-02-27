@@ -91,7 +91,7 @@ resource "aws_security_group" "mysg" {
 # ---------------- EC2 Instances ----------------
 resource "aws_instance" "jump_server" {
   ami                         = "ami-0f5ee92e2d63afc18"
-  instance_type               = "t2.micro"
+  instance_type               = "t3.micro"
   subnet_id                   = aws_subnet.public_subnet.id
   vpc_security_group_ids      = [aws_security_group.mysg.id]
   associate_public_ip_address = true
@@ -103,7 +103,7 @@ resource "aws_instance" "jump_server" {
 
 resource "aws_instance" "app_server" {
   ami                         = "ami-0f5ee92e2d63afc18"
-  instance_type               = "t2.micro"
+  instance_type               = "t3.micro"
   subnet_id                   = aws_subnet.public_subnet.id
   vpc_security_group_ids      = [aws_security_group.mysg.id]
   associate_public_ip_address = true
@@ -115,7 +115,7 @@ resource "aws_instance" "app_server" {
 
 resource "aws_instance" "db_server" {
   ami                         = "ami-0f5ee92e2d63afc18"
-  instance_type               = "t2.micro"
+  instance_type               = "t3.micro"
   subnet_id                   = aws_subnet.public_subnet.id
   vpc_security_group_ids      = [aws_security_group.mysg.id]
   associate_public_ip_address = true
