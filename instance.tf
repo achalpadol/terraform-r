@@ -12,6 +12,12 @@ tags = {
 }
 }
 
+resource "aws_key_pair" "generated_key" {
+  key_name   = "generated-key"
+  public_key = tls_private_key.example_ssh.public_key_openssh
+}
+  
+
 resource "aws_security_group" "my-sg" {
     name = "fct-sg"
     ingress {
