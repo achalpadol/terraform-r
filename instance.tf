@@ -33,7 +33,7 @@ resource "aws_launch_template" "web_template" {
   image_id      = "ami-0f5ee92e2d63afc18"
   instance_type = "t2.micro"
 
-  vpc_security_group_ids = [aws_security_group.web_sg.id]
+  vpc_security_group_ids = [aws_security_group.my-sg.id]
 
   user_data = base64encode(<<-EOF
               #!/bin/bash
@@ -47,7 +47,7 @@ resource "aws_lb" "app_lb" {
   name               = "app-load-balancer"
   load_balancer_type = "application"
   subnets            = ["subnet-0fa61c74694df6bf4", "subnet-023dc2dad10b7c274"] 
-  security_groups    = [aws_security_group.web_sg.id]
+  security_groups    = [aws_security_group.my-sg.id]
 }
 resource "aws_lb_target_group" "app_tg" {
   name     = "app-target-group"
